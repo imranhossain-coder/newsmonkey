@@ -9,6 +9,8 @@ const News = (props) => {
   const [loading, setloading] = useState(true);
   const [totalArticales, settotalArticales] = useState(0);
 
+  const apiKey = "4ead8312dc1042d8a3c221324a9be59e";
+
   const capitalizeletter = (String) => {
     return String.charAt(0).toUpperCase() + String.slice(1);
   };
@@ -19,7 +21,7 @@ const News = (props) => {
     props.setProgress(10);
     const url = `https://newsapi.org/v2/top-headlines?country=${
       props.country
-    }&category=${props.category}&apiKey=2cd304b5a1b74f198e64f8260384846b&page=${
+    }&category=${props.category}&apiKey=${apiKey}&page=${
       page
     }&pageSize=${props.pageSize}`;
     const res = await fetch(url);
@@ -39,7 +41,7 @@ const News = (props) => {
   const fetchMoreData = async () => {
     const url = `https://newsapi.org/v2/top-headlines?country=${
       props.country
-    }&category=${props.category}&apiKey=2cd304b5a1b74f198e64f8260384846b&page=${
+    }&category=${props.category}&apiKey=${apiKey}&page=${
       page + 1
     }&pageSize=${props.pageSize}`;
     setpage(page + 1);
